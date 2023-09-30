@@ -1,1 +1,8 @@
 rootProject.name = 'Yosep-Ecommerce-Product-Server'
+include 'product-write-api'
+include 'product-read-api'
+include 'product-mysql-domain'
+include 'product-mongo-domain'
+include 'web-core'
+include 'product-web-core'
+
