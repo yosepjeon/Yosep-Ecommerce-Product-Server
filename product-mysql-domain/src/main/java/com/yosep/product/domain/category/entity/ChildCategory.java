@@ -16,6 +16,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author yosep
+ * @since 2023-10-05
+ */
 @Getter
 @Entity
 @Table(name = "yosep_product_child_category")
