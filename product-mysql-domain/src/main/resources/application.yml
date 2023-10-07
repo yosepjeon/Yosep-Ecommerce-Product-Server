@@ -9,6 +9,9 @@ server:
   shutdown: graceful
 
 spring:
+  h2:
+    console:
+      enabled: true
   jpa:
     hibernate:
       ddl-auto: none
@@ -27,12 +30,12 @@ spring:
       maximum-pool-size: 10
     yosep-read:
       driver-class-name: org.h2.Driver
-      jdbc-url: jdbc:h2:mem:yosep;MODE=MySQL;DATABASE_TO_UPPER=false
+      jdbc-url: jdbc:h2:mem:yosep;MODE=MySQL;DATABASE_TO_LOWER=TRUE
       username: SA
       password:
     yosep-write:
       driver-class-name: org.h2.Driver
-      jdbc-url: jdbc:h2:mem:yosep;MODE=MySQL;DATABASE_TO_UPPER=false
+      jdbc-url: jdbc:h2:mem:yosep;MODE=MySQL;DATABASE_TO_LOWER=TRUE
       username: SA
       password:
 

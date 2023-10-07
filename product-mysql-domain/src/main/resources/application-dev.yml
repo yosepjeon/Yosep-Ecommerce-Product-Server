@@ -3,10 +3,11 @@ profile: dev
 spring:
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: false
     open-in-view: false
     properties.hibernate:
+      globally_quoted_identifiers: true
       dialect: org.hibernate.dialect.MySQLDialect
       enable_lazy_load_no_trans: true
       jdbc:
@@ -18,15 +19,15 @@ spring:
       max-lifetime: 100000
       maximum-pool-size: 10
     yosep-read:
-      driver-class-name: org.h2.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://localhost:3306/yosep?useUnicode=true&characterEncoding=utf8&autoreconnect=true
-      username: SA
-      password:
+      username: root
+      password: fcsdb1!
     yosep-write:
-      driver-class-name: org.h2.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       jdbc-url: jdbc:mysql://localhost:3306/yosep?useUnicode=true&characterEncoding=utf8&autoreconnect=true
-      username: SA
-      password:
+      username: root
+      password: fcsdb1!
 
 #  sql:
 #    init:
