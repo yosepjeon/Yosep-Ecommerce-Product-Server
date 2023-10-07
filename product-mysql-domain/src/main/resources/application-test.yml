@@ -9,6 +9,12 @@ server:
   shutdown: graceful
 
 spring:
+  config:
+    activate:
+      on-profile: test
+  h2:
+    console:
+      enabled: true
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -27,17 +33,17 @@ spring:
       maximum-pool-size: 10
     yosep-read:
       driver-class-name: org.h2.Driver
-      jdbc-url: jdbc:h2:mem:yosep;MODE=MYSQL;DATABASE_TO_UPPER=false
+      jdbc-url: jdbc:h2:mem:yosep;Mode=MySQL;DATABASE_TO_LOWER=TRUE
       username: SA
       password:
     yosep-write:
       driver-class-name: org.h2.Driver
-      jdbc-url: jdbc:h2:mem:yosep;MODE=MYSQL;DATABASE_TO_UPPER=false
+      jdbc-url: jdbc:h2:mem:yosep;MODE=MySQL;DATABASE_TO_LOWER=TRUE
       username: SA
       password:
 
-  sql:
-    init:
-      mode: embedded
-      schema-locations: classpath*:sql/h2-table-create.sql
-      data-locations: classpath*:sql/h2-data-insert.sql
+#  sql:
+#    init:
+#      mode: embedded
+#      schema-locations: classpath*:sql/product-create.sql
+#      data-locations: classpath*:sql/h2-data-insert.sql
