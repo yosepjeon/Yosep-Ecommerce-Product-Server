@@ -1,4 +1,4 @@
-package com.yosep.product.infra.config;
+package com.yosep.product.domain.global.infra.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

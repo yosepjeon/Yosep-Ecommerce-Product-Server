@@ -1,4 +1,4 @@
-package com.yosep.product.infra;
+package com.yosep.product.domain.global.infra;
 
 import java.util.HashMap;
 import javax.sql.DataSource;
