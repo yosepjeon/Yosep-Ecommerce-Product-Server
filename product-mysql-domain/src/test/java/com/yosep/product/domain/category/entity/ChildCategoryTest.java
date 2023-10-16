@@ -8,6 +8,7 @@ class ChildCategoryTest {
 
 	@Test
 	void testEquals() {
+		// Given
 		ParentCategory parentCategory = new ParentCategory(1, "parentCategory");
 
 		ChildCategory childCategory1 = new ChildCategory(1, "childCategory1", parentCategory);
@@ -18,6 +19,7 @@ class ChildCategoryTest {
 			.parentCategory(parentCategory)
 			.build();
 
+		// When & Then
 		assertNotEquals(childCategory1, childCategory2);
 		assertNotEquals(childCategory1.getCategoryName(), childCategory3.getCategoryName());
 		assertEquals(childCategory1.getParentCategory(), childCategory3.getParentCategory());
