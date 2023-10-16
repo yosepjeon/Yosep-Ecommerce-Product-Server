@@ -36,7 +36,7 @@ public class ChildCategory {
 	private String categoryName;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id", nullable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+	@JoinColumn(name = "parent_cataegory_id", nullable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
 	private ParentCategory parentCategory;
 
 	@Builder
