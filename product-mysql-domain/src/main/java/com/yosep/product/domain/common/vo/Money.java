@@ -1,5 +1,6 @@
 package com.yosep.product.domain.common.vo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -24,8 +25,10 @@ public class Money implements Serializable {
 
 	public static final Money ZERO = new Money(BigDecimal.ZERO);
 
+	@Column(name = "price", precision = 15, scale = 2)
 	private BigDecimal value;
 
+	@Column(name = "currency_code")
 	private String currencyCode;
 
 	protected Money() {
