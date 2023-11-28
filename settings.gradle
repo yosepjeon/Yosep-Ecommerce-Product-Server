@@ -5,4 +5,6 @@ include 'product-mysql-domain'
 include 'product-mongo-domain'
 include 'web-core'
 include 'product-web-core'
+include 'product-java-core'
+include 'product-java-core'
 
