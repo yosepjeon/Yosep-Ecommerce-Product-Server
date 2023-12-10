@@ -1,7 +1,6 @@
 package com.yosep.product.domain.product.value;
 
 import com.yosep.product.domain.product.error.InvalidStockValueException;
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -12,19 +11,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Stock {
 
-	@Nonnull
 	@Column(nullable = false)
-	private Long total;
+	private long total;
 
-	@Nonnull
 	@Column(nullable = false)
-	private Long remain;
+	private long remain;
 
 	public void increaseTotal(Long value) {
 		ensureValidStock(value);
 
-		Long nextTotal = total + value;
-		Long nextRemain = remain + value;
+		long nextTotal = total + value;
+		long nextRemain = remain + value;
 
 		ensureValidStock(nextTotal);
 		ensureValidStock(nextRemain);
@@ -71,7 +68,7 @@ public class Stock {
 	}
 
 	// Getters and Setters
-	public Long getTotal() {
+	public long getTotal() {
 		return total;
 	}
 
@@ -79,7 +76,7 @@ public class Stock {
 		this.total = total;
 	}
 
-	public Long getRemain() {
+	public long getRemain() {
 		return remain;
 	}
 
