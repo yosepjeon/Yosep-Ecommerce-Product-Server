@@ -33,12 +33,10 @@ class ProductTest {
 		Money priceMock = new Money(10000);
 		Stock stockMock = new Stock(10, 10);
 		ParentCategory parentCategoryMock = ParentCategory.builder()
-			.id(1)
 			.categoryName("바지")
 			.build();
 		ParentCategory savedParentCategory = parentCategoryReadRepository.save(parentCategoryMock);
 		ChildCategory childCategoryMock = ChildCategory.builder()
-			.id(1)
 			.parentCategory(savedParentCategory)
 			.categoryName("청바지")
 			.build();

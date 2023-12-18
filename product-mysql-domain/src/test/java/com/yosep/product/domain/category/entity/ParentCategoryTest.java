@@ -10,10 +10,9 @@ class ParentCategoryTest {
 	@Test
 	void testEquals() {
 		// Given
-		ParentCategory parentCategory1 = new ParentCategory(1, "parentCategory1");
-		ParentCategory parentCategory2 = new ParentCategory(1, "parentCategory1");
+		ParentCategory parentCategory1 = new ParentCategory("parentCategory1");
+		ParentCategory parentCategory2 = new ParentCategory("parentCategory1");
 		ParentCategory parentCategory3 = ParentCategory.builder()
-			.id(1)
 			.categoryName("parentCategory2")
 			.build();
 		ParentCategory parentCategory4 = new ParentCategory();
