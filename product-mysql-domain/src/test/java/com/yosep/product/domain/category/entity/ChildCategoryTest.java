@@ -9,12 +9,11 @@ class ChildCategoryTest {
 	@Test
 	void testEquals() {
 		// Given
-		ParentCategory parentCategory = new ParentCategory(1, "parentCategory");
+		ParentCategory parentCategory = new ParentCategory("parentCategory");
 
-		ChildCategory childCategory1 = new ChildCategory(1, "childCategory1", parentCategory);
+		ChildCategory childCategory1 = new ChildCategory("childCategory1", parentCategory);
 		ChildCategory childCategory2 = new ChildCategory();
 		ChildCategory childCategory3 = ChildCategory.builder()
-			.id(3)
 			.categoryName("childCategory3")
 			.parentCategory(parentCategory)
 			.build();
