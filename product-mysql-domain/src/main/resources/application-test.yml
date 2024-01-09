@@ -26,6 +26,10 @@ spring:
       jdbc:
         batch_size: 1000
         time_zone: Asia/Seoul
+    properties:
+      hibernate:
+        hibernate:
+          show_sql: false
 
   datasource:
     hikari:

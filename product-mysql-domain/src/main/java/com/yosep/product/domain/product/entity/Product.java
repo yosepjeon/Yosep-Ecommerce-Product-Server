@@ -15,7 +15,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +27,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "yosep_product")
 @NoArgsConstructor
-@AllArgsConstructor
 public class Product extends AutoIncPkEntity {
 
 	@Column(name = "product_name", nullable = false)
