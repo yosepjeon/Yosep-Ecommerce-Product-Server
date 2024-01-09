@@ -1,15 +1,34 @@
 create table yosep_product
 (
-    id               bigint auto_increment primary key comment '상품 ID',
-    product_name     varchar(100) not null comment '상품 이름',
-    seller_id        varchar(50)  not null comment '셀러 코드',
-    product_price    decimal      not null comment '상품 가격',
-    product_quantity int          not null comment '상품 재고',
-    category_id      bigint       not null comment '상품 카테고리'
+    delete_check       bit,
+    price              decimal(15, 2),
+    child_category_id  bigint       not null,
+    delete_time        datetime(6),
+    id                 bigint       not null auto_increment,
+    insert_time        datetime(6),
+    parent_category_id bigint       not null,
+    remain             bigint       not null,
+    seller_id          bigint       not null,
+    total              bigint       not null,
+    update_time        datetime(6),
+    currency_code      varchar(255),
+    insert_operator    varchar(255),
+    product_name       varchar(255) not null,
+    update_operator    varchar(255),
+    primary key (id)
 );
 
 create table yosep_product_parent_category
 (
-    id            bigint auto_increment primary key comment '카테고리 ID',
-    category_name varchar(100) not null comment '카테코리 이름'
+    id            bigint       not null auto_increment,
+    category_name varchar(255) not null,
+    primary key (id)
+);
+
+create table yosep_product_child_category
+(
+    id                  bigint       not null auto_increment,
+    parent_cataegory_id bigint       not null,
+    category_name       varchar(255) not null,
+    primary key (id)
 );

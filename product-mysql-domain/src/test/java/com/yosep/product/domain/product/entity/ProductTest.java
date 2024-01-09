@@ -10,6 +10,7 @@ import com.yosep.product.domain.category.repository.read.ParentCategoryReadRepos
 import com.yosep.product.domain.common.vo.Money;
 import com.yosep.product.domain.product.repository.write.ProductWriteRepository;
 import com.yosep.product.domain.product.value.Stock;
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -42,6 +43,8 @@ class ProductTest {
 			.build();
 		ChildCategory savedChildCategory = childCategoryReadRepository.save(childCategoryMock);
 		boolean isDeletedMock = false;
+		String insertOperatorMock = "전요셉";
+		LocalDateTime now = LocalDateTime.now();
 
 		Product product = Product.builder()
 			.productName(productNameMock)
@@ -50,6 +53,11 @@ class ProductTest {
 			.stockQuantity(stockMock)
 			.childCategory(savedChildCategory)
 			.isDeleted(isDeletedMock)
+			.insertOperator(insertOperatorMock)
+			.updateOperator(insertOperatorMock)
+			.insertTime(now)
+			.updateTime(now)
+			.deleteTime(now)
 			.build();
 
 		// When
@@ -62,5 +70,11 @@ class ProductTest {
 		assertEquals(product.getParentCategory().getCategoryName(), savedProduct.getParentCategory().getCategoryName());
 		assertEquals(childCategoryMock.getCategoryName(), savedProduct.getChildCategory().getCategoryName());
 		assertEquals(product.getStockQuantity().getRemain(), savedProduct.getStockQuantity().getRemain());
+		assertEquals(isDeletedMock, product.isDeleted());
+		assertEquals(insertOperatorMock, product.getInsertOperator());
+		assertEquals(insertOperatorMock, product.getUpdateOperator());
+		assertEquals(now, product.getInsertTime());
+		assertEquals(now, product.getUpdateTime());
+		assertEquals(now, product.getDeleteTime());
 	}
 }
