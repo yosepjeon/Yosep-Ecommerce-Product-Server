@@ -25,7 +25,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     transactionManagerRef = "lmsWriteTransactionManager",
     basePackages = {
         "com.yosep.product.domain.category.repository.write",
-        "com.yosep.product.domain.common.repository.write",
         "com.yosep.product.domain.product.repository.write"
     }
 )

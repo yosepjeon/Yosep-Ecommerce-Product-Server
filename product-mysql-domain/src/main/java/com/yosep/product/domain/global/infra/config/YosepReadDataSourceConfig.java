@@ -23,9 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     entityManagerFactoryRef = "yosepReadEntityManager",
     transactionManagerRef = "lmsReadTransactionManager",
     basePackages = {
-        "com.yosep.product.domain.category.repository.read",
-        "com.yosep.product.domain.common.repository.read",
-        "com.yosep.product.domain.product.repository.read"
+        "com.yosep.product.domain.category.repository.read"
     }
 )
 public class YosepReadDataSourceConfig {
@@ -49,7 +47,7 @@ public class YosepReadDataSourceConfig {
     }
 
     @Bean
-    public PlatformTransactionManager lmsReadTransactionManager(
+    public PlatformTransactionManager yosepReadTransactionManager(
         @Qualifier("yosepReadEntityManager") LocalContainerEntityManagerFactoryBean entityManager
     ) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
