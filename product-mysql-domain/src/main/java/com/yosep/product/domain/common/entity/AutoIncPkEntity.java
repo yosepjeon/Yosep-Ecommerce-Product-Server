@@ -8,18 +8,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Objects;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+@SuperBuilder
 @MappedSuperclass
+@NoArgsConstructor
+@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class AutoIncPkEntity implements Persistable<Long> {
 
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id = 0L;
+	protected Long id;
 
 	@Override
 	public Long getId() {
@@ -28,7 +35,7 @@ public class AutoIncPkEntity implements Persistable<Long> {
 
 	@Override
 	public boolean isNew() {
-		return id != 0L;
+		return id == null || id != 0L;
 	}
 
 	@Override
@@ -49,7 +56,7 @@ public class AutoIncPkEntity implements Persistable<Long> {
 		return Objects.hash(id);
 	}
 
-	private Serializable getIdentifier(Object obj) {
+	protected Serializable getIdentifier(Object obj) {
 		if (obj instanceof HibernateProxy) {
 			return (Serializable) ((HibernateProxy) obj).getHibernateLazyInitializer().getIdentifier();
 		} else {

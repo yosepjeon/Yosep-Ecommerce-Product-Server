@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Locale;
+
+import com.yosep.product.domain.image.entity.ProductImage;
 import org.junit.jupiter.api.Test;
 
 /**

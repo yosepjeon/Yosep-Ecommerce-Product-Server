@@ -20,14 +20,14 @@ spring:
       maximum-pool-size: 10
     yosep-read:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/yosep?useUnicode=true&characterEncoding=utf8&autoreconnect=true
+      jdbc-url: jdbc:mysql://localhost:3306/yos?useUnicode=true&characterEncoding=utf8&autoreconnect=true
       username: root
-      password: fcsdb1!
+      password: root
     yosep-write:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/yosep?useUnicode=true&characterEncoding=utf8&autoreconnect=true
+      jdbc-url: jdbc:mysql://localhost:3306/yos?useUnicode=true&characterEncoding=utf8&autoreconnect=true
       username: root
-      password: fcsdb1!
+      password: root
 
 #  sql:
 #    init:
