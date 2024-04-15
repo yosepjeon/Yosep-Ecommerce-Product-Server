@@ -10,7 +10,9 @@ import com.yosep.product.domain.category.repository.read.ParentCategoryReadRepos
 import com.yosep.product.domain.common.vo.Money;
 import com.yosep.product.domain.product.repository.write.ProductWriteRepository;
 import com.yosep.product.domain.product.value.Stock;
+
 import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -19,62 +21,64 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles("test")
 class ProductTest {
 
-	@Autowired
-	private ProductWriteRepository productWriteRepository;
-	@Autowired
-	private ParentCategoryReadRepository parentCategoryReadRepository;
-	@Autowired
-	private ChildCategoryReadRepository childCategoryReadRepository;
+    @Autowired
+    private ProductWriteRepository productWriteRepository;
+    @Autowired
+    private ParentCategoryReadRepository parentCategoryReadRepository;
+    @Autowired
+    private ChildCategoryReadRepository childCategoryReadRepository;
 
-	@Test
-	void 상품엔티티_프로퍼티_비교테스트() {
-		// Given
-		String productNameMock = "product1";
-		long sellerIdMock = 1;
-		Money priceMock = new Money(10000);
-		Stock stockMock = new Stock(10, 10);
-		ParentCategory parentCategoryMock = ParentCategory.builder()
-			.categoryName("바지")
-			.build();
-		ParentCategory savedParentCategory = parentCategoryReadRepository.save(parentCategoryMock);
-		ChildCategory childCategoryMock = ChildCategory.builder()
-			.parentCategory(savedParentCategory)
-			.categoryName("청바지")
-			.build();
-		ChildCategory savedChildCategory = childCategoryReadRepository.save(childCategoryMock);
-		boolean isDeletedMock = false;
-		String insertOperatorMock = "전요셉";
-		LocalDateTime now = LocalDateTime.now();
+    @Test
+    void 상품엔티티_프로퍼티_비교테스트() {
+        // Given
+        String productNameMock = "product1";
+        long sellerIdMock = 1;
+        Money priceMock = new Money(10000);
+        Stock stockMock = new Stock(10, 10);
+        ParentCategory parentCategoryMock = ParentCategory.builder()
+                .categoryName("바지")
+                .build();
+        ParentCategory savedParentCategory = parentCategoryReadRepository.save(parentCategoryMock);
+        ChildCategory childCategoryMock = ChildCategory.builder()
+                .parentCategory(savedParentCategory)
+                .categoryName("청바지")
+                .build();
+        ChildCategory savedChildCategory = childCategoryReadRepository.save(childCategoryMock);
+        boolean isDeletedMock = false;
+        String insertOperatorMock = "전요셉";
+        LocalDateTime now = LocalDateTime.now();
 
-		Product product = Product.builder()
-			.productName(productNameMock)
-			.sellerId(sellerIdMock)
-			.price(priceMock)
-			.stockQuantity(stockMock)
-			.childCategory(savedChildCategory)
-			.isDeleted(isDeletedMock)
-			.insertOperator(insertOperatorMock)
-			.updateOperator(insertOperatorMock)
-			.insertTime(now)
-			.updateTime(now)
-			.deleteTime(now)
-			.build();
+        Product product = Product.builder()
+                .productName(productNameMock)
+                .sellerId(sellerIdMock)
+                .price(priceMock)
+                .stockQuantity(stockMock)
+                .parentCategory(savedParentCategory)
+                .childCategory(savedChildCategory)
+                .isDeleted(isDeletedMock)
+                .insertOperator(insertOperatorMock)
+                .updateOperator(insertOperatorMock)
+                .insertTime(now)
+                .updateTime(now)
+                .deleteTime(now)
+                .build();
 
-		// When
-		Product savedProduct = productWriteRepository.save(product);
+        // When
+        Product savedProduct = productWriteRepository.save(product);
+		System.out.println(savedProduct.getId());
 
-		// Then
-		assertEquals(product.getProductName(), savedProduct.getProductName());
-		assertEquals(product.getPrice(), savedProduct.getPrice());
-		assertEquals(product.getSellerId(), savedProduct.getSellerId());
-		assertEquals(product.getParentCategory().getCategoryName(), savedProduct.getParentCategory().getCategoryName());
-		assertEquals(childCategoryMock.getCategoryName(), savedProduct.getChildCategory().getCategoryName());
-		assertEquals(product.getStockQuantity().getRemain(), savedProduct.getStockQuantity().getRemain());
-		assertEquals(isDeletedMock, product.isDeleted());
-		assertEquals(insertOperatorMock, product.getInsertOperator());
-		assertEquals(insertOperatorMock, product.getUpdateOperator());
-		assertEquals(now, product.getInsertTime());
-		assertEquals(now, product.getUpdateTime());
-		assertEquals(now, product.getDeleteTime());
-	}
+        // Then
+        assertEquals(product.getProductName(), savedProduct.getProductName());
+        assertEquals(product.getPrice(), savedProduct.getPrice());
+        assertEquals(product.getSellerId(), savedProduct.getSellerId());
+        assertEquals(product.getParentCategory().getCategoryName(), savedProduct.getParentCategory().getCategoryName());
+        assertEquals(childCategoryMock.getCategoryName(), savedProduct.getChildCategory().getCategoryName());
+        assertEquals(product.getStockQuantity().getRemain(), savedProduct.getStockQuantity().getRemain());
+        assertEquals(isDeletedMock, product.isDeleted());
+        assertEquals(insertOperatorMock, product.getInsertOperator());
+        assertEquals(insertOperatorMock, product.getUpdateOperator());
+        assertEquals(now, product.getInsertTime());
+        assertEquals(now, product.getUpdateTime());
+        assertEquals(now, product.getDeleteTime());
+    }
 }

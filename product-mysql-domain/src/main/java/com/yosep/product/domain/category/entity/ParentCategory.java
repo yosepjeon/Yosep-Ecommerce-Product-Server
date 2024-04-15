@@ -1,13 +1,11 @@
 package com.yosep.product.domain.category.entity;
 
-import com.yosep.product.domain.common.entity.AutoIncPkEntity;
+import com.yosep.product.domain.common.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 /**
  * @author yosep
@@ -15,16 +13,13 @@ import lombok.NoArgsConstructor;
  */
 @Getter
 @Entity
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "yosep_product_parent_category")
 @EqualsAndHashCode(callSuper = true, of = {"categoryName"})
-@NoArgsConstructor
-public class ParentCategory extends AutoIncPkEntity {
+public class ParentCategory extends BaseEntity {
 
 	@Column(name = "category_name", nullable = false)
 	private String categoryName;
-
-	@Builder
-	public ParentCategory(String categoryName) {
-		this.categoryName = categoryName;
-	}
 }
